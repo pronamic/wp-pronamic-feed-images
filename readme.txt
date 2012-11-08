@@ -5,7 +5,7 @@ Requires at least: 3.0
 Tested up to: 3.2
 Stable tag: 0.1
 
-Easily add images to WordPress feeds.
+This plugin automatically adds the post thubmanil to the WordPress feeds, the image size can be easily configured.
 
 == Description ==
 

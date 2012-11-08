@@ -51,8 +51,8 @@ class Pronamic_Feed_Images_Plugin {
 		self::$file = $file;
 		self::$dirname = dirname( $file );
 
-		add_action( 'init',              array( __CLASS__, 'init' ) );
-		add_action( 'admin_init',        array( __CLASS__, 'admin_init' ) );
+		add_action( 'init',       array( __CLASS__, 'init' ) );
+		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 	}
 
 	//////////////////////////////////////////////////
@@ -64,7 +64,7 @@ class Pronamic_Feed_Images_Plugin {
 		// Text domain
 		$rel_path = dirname( plugin_basename( self::$file ) ) . '/languages/';
 	
-		load_plugin_textdomain( 'pronamic_issuu', false, $rel_path );
+		load_plugin_textdomain( 'pronamic_feed_images', false, $rel_path );
 
 		// Feed images
 		self::$feed_image_size = get_option( 'pronamic_feed_images_size' );
@@ -84,12 +84,19 @@ class Pronamic_Feed_Images_Plugin {
 	 * Admin initialize
 	 */
 	public static function admin_init() {
+		add_settings_section(
+			'pronamic_feed_images', // id
+			__( 'Feed', 'pronamic_feed_images' ), // title
+			array( __CLASS__, 'settings_section' ), // callback
+			'media' // page
+		);
+
 		add_settings_field( 
 			'pronamic_feed_images_size', // id
 			__( 'Feed Images Size', 'pronamic_feed_images' ), // title
 			array( __CLASS__, 'input_image_sizes' ),  // callback
-			'reading', // page
-			'default', // section 
+			'media', // page
+			'pronamic_feed_images', // section 
 			array(  // args 
 				'class'     => 'regular-text',
 				'label_for' => 'pronamic_feed_images_size' 
@@ -97,7 +104,7 @@ class Pronamic_Feed_Images_Plugin {
 		);
 
 		// Register settings
-		register_setting( 'reading', 'pronamic_feed_images_size' );
+		register_setting( 'media', 'pronamic_feed_images_size' );
 	}
 
 	/**
@@ -147,7 +154,7 @@ class Pronamic_Feed_Images_Plugin {
 	/**
 	 * Add feed image to output
 	 * 
-	 * @param unknown_type $output
+	 * @param string $output
 	 */
 	public static function add_feed_image( $output ) {
 		if ( has_post_thumbnail() ) {

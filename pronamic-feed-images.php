@@ -70,8 +70,8 @@ class Pronamic_Feed_Images_Plugin {
 		self::$feed_image_size = get_option( 'pronamic_feed_images_size' );
 
 		if ( !empty( self::$feed_image_size ) ) {
-			add_filter( 'the_excerpt_rss',  array( __CLASS__, 'add_feed_image' ) );
-			add_filter( 'the_content_feed', array( __CLASS__, 'add_feed_image' ) );
+			// add_filter( 'the_excerpt_rss',  array( __CLASS__, 'add_feed_image' ) );
+			// add_filter( 'the_content_feed', array( __CLASS__, 'add_feed_image' ) );
 
 			add_action( 'rss_item',         array( __CLASS__, 'feed_item' ) );
 			add_action( 'rss2_item',        array( __CLASS__, 'feed_item' ) );

@@ -4,7 +4,7 @@ Plugin Name: Pronamic Feed Images
 Plugin URI: http://pronamic.eu/wp-plugins/feed-images/
 Description: This plugin automatically adds the post thubmanil to the WordPress feeds, the image size can be easily configured.
  
-Version: 0.1
+Version: 1.0.0
 Requires at least: 3.0
 
 Author: Pronamic

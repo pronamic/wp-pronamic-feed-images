@@ -3,7 +3,7 @@ Contributors: pronamic, remcotolsma
 Tags: pronamic, feed, image, thumbnail, rss
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 0.1
+Stable tag: 1.0.0
 
 This plugin automatically adds the post thubmanil to the WordPress feeds, the image size can be easily configured.
 
@@ -27,7 +27,10 @@ WordPress installation and then activate the Plugin from Plugins page.
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 =
+*	No longer auto add images to feed content
+
+= 0.1 =
 *	Initial release
 
 

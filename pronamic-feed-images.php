@@ -3,7 +3,7 @@
 Plugin Name: Pronamic Feed Images
 Plugin URI: http://pronamic.eu/wp-plugins/feed-images/
 Description: This plugin automatically adds the post thubmanil to the WordPress feeds, the image size can be easily configured.
- 
+
 Version: 1.0.0
 Requires at least: 3.0
 
@@ -21,14 +21,14 @@ GitHub URI: https://github.com/pronamic/wp-pronamic-feed-images
 class Pronamic_Feed_Images_Plugin {
 	/**
 	 * The plugin file
-	 * 
+	 *
 	 * @var string
 	 */
 	public static $file;
 
 	/**
 	 * The plugin directory name
-	 * 
+	 *
 	 * @var string
 	 */
 	public static $dirname;
@@ -37,7 +37,7 @@ class Pronamic_Feed_Images_Plugin {
 
 	/**
 	 * The feed image size
-	 * 
+	 *
 	 * @var string
 	 */
 	public static $feed_image_size;
@@ -63,13 +63,13 @@ class Pronamic_Feed_Images_Plugin {
 	public static function init() {
 		// Text domain
 		$rel_path = dirname( plugin_basename( self::$file ) ) . '/languages/';
-	
+
 		load_plugin_textdomain( 'pronamic_feed_images', false, $rel_path );
 
 		// Feed images
 		self::$feed_image_size = get_option( 'pronamic_feed_images_size' );
 
-		if ( !empty( self::$feed_image_size ) ) {
+		if ( ! empty( self::$feed_image_size ) ) {
 			// add_filter( 'the_excerpt_rss',  array( __CLASS__, 'add_feed_image' ) );
 			// add_filter( 'the_content_feed', array( __CLASS__, 'add_feed_image' ) );
 
@@ -91,16 +91,16 @@ class Pronamic_Feed_Images_Plugin {
 			'media' // page
 		);
 
-		add_settings_field( 
+		add_settings_field(
 			'pronamic_feed_images_size', // id
 			__( 'Feed Images Size', 'pronamic_feed_images' ), // title
 			array( __CLASS__, 'input_image_sizes' ),  // callback
 			'media', // page
-			'pronamic_feed_images', // section 
-			array(  // args 
+			'pronamic_feed_images', // section
+			array(  // args
 				'class'     => 'regular-text',
-				'label_for' => 'pronamic_feed_images_size' 
-			) 
+				'label_for' => 'pronamic_feed_images_size',
+			)
 		);
 
 		// Register settings
@@ -111,12 +111,12 @@ class Pronamic_Feed_Images_Plugin {
 	 * Settings section
 	 */
 	public static function settings_section() {
-		
+
 	}
 
 	/**
 	 * Input page
-	 * 
+	 *
 	 * @param array $args
 	 */
 	public static function input_image_sizes( $args ) {
@@ -126,34 +126,34 @@ class Pronamic_Feed_Images_Plugin {
 
 		$image_size = get_option( $name );
 
-		$image_sizes = get_intermediate_image_sizes(); 
+		$image_sizes = get_intermediate_image_sizes();
 
 		?><select id="<?php echo esc_attr( $name ); ?>" name="<?php echo esc_attr( $name ); ?>">
-    		<option value="" <?php selected( $image_size, '' ); ?>></option>
+			<option value="" <?php selected( $image_size, '' ); ?>></option>
 
-			<?php foreach ( $image_sizes as $size_name ): ?>
-    			<option value="<?php echo esc_attr( $size_name ); ?>" <?php selected( $image_size, $size_name ); ?>><?php 
-    			
-    			echo $size_name;
-    			
-    			if ( isset( $_wp_additional_image_sizes[$size_name] ) ) {
-    				$size = $_wp_additional_image_sizes[$size_name];
-    				
-    				if ( isset( $size['width'], $size['height'] ) ) {
-    					echo ' (';
-    					echo $size['width'], ' &times; ', $size['height'];  					
-    					echo ')';
-    				}
-    			}
-    			
-    			?></option>
-    		<?php endforeach; ?>
-    	</select><?php
+			<?php foreach ( $image_sizes as $size_name ) : ?>
+				<option value="<?php echo esc_attr( $size_name ); ?>" <?php selected( $image_size, $size_name ); ?>><?php
+
+				echo esc_html( $size_name );
+
+				if ( isset( $_wp_additional_image_sizes[ $size_name ] ) ) {
+					$size = $_wp_additional_image_sizes[ $size_name ];
+
+					if ( isset( $size['width'], $size['height'] ) ) {
+						echo ' (';
+						echo esc_html( $size['width'] ), ' × ', esc_html( $size['height'] );
+						echo ')';
+					}
+				}
+
+				?></option>
+			<?php endforeach; ?>
+		</select><?php
 	}
-	
+
 	/**
 	 * Add feed image to output
-	 * 
+	 *
 	 * @param string $output
 	 */
 	public static function add_feed_image( $output ) {
@@ -172,12 +172,16 @@ class Pronamic_Feed_Images_Plugin {
 			$thumbnail_id = get_post_thumbnail_id();
 
 			$src  = wp_get_attachment_image_src( $thumbnail_id, self::$feed_image_size );
-			
+
 			if ( $src ) {
 				$url  = $src[0];
 				$type = get_post_mime_type( $thumbnail_id );
-			
-				printf( '<enclosure url="%s" type="%s" />', $url, $type );
+
+				printf(
+					'<enclosure url="%s" type="%s" />',
+					esc_attr( $url ),
+					esc_attr( $type )
+				);
 			}
 		}
 	}

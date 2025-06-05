@@ -19,5 +19,7 @@
 		"url": "https://github.com/pronamic/wp-pronamic-feed-images/issues"
 	},
 	"homepage": "https://github.com/pronamic/wp-pronamic-feed-images",
-	"devDependencies": {}
+	"devDependencies": {
+		"@wordpress/env": "^10.25.0"
+	}
 }

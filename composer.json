@@ -8,7 +8,8 @@
 		"pronamic/wp-coding-standards": "^2.3",
 		"roots/wordpress-no-content": "^6.8",
 		"wp-cli/dist-archive-command": "*",
-		"wp-cli/wp-cli-bundle": "*"
+		"wp-cli/wp-cli-bundle": "*",
+		"rector/rector": "^2.0"
 	},
 	"scripts": {
 		"build": [

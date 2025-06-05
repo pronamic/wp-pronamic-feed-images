@@ -9,6 +9,8 @@ This plugin automatically adds the post thubmanil to the WordPress feeds, the im
 
 == Description ==
 
+[Pronamic](https://www.pronamic.eu/) · [GitHub](https://github.com/pronamic/wp-pronamic-feed-images)
+
 This plugin automatically adds the post thubmanil to the WordPress feeds, the image size can be easily configured. This plugin differs from other plugins because it is built according the WordPress Coding Standards and uses many powerful WordPress functions.
 
 

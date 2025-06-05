@@ -33,7 +33,6 @@ class Pronamic_Feed_Images_Plugin {
 	 */
 	public static $dirname;
 
-	
 	/**
 	 * The feed image size
 	 *
@@ -41,7 +40,6 @@ class Pronamic_Feed_Images_Plugin {
 	 */
 	public static $feed_image_size;
 
-	
 	/**
 	 * Bootstrap
 	 */
@@ -53,7 +51,6 @@ class Pronamic_Feed_Images_Plugin {
 		add_action( 'admin_init', [ __CLASS__, 'admin_init' ] );
 	}
 
-	
 	/**
 	 * Initialize
 	 */

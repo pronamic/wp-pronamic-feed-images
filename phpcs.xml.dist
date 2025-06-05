@@ -9,7 +9,7 @@
 	<exclude-pattern type="relative">^vendor/*</exclude-pattern>
 
 	<rule ref="PronamicWP">
-
+		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.get_intermediate_image_sizes_get_intermediate_image_sizes" />
 	</rule>
 
 	<rule ref="WordPress.WP.I18n">

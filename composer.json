@@ -9,5 +9,24 @@
 		"roots/wordpress-no-content": "^6.8",
 		"wp-cli/dist-archive-command": "*",
 		"wp-cli/wp-cli-bundle": "*"
+	},
+	"scripts": {
+		"build": [
+			"rm -rf ./build/stage-1/*",
+			"rm -rf ./build/stage-2/*",
+			"mkdir -p ./build/stage-1",
+			"mkdir -p ./build/stage-2",
+			"rsync --recursive --verbose --exclude-from=.distignore --exclude-from=.gitignore ./ ./build/stage-1/",
+			"composer install --no-dev --prefer-dist --optimize-autoloader --working-dir=./build/stage-1/",
+			"rsync --recursive --verbose --exclude-from=.distignore ./build/stage-1/ ./build/stage-2/",
+			"vendor/bin/wp i18n make-pot ./build/stage-2/ --slug=pronamic-feed-images",
+			"vendor/bin/wp i18n make-mo ./build/stage-2/languages/",
+			"vendor/bin/wp dist-archive ./build/stage-2/ --plugin-dirname=pronamic-feed-images"
+		],
+		"translate": [
+			"@build",
+			"rsync --recursive --delete --verbose ./build/stage-2/languages/ ./languages/",
+			"vendor/bin/wp i18n update-po ./languages/pronamic-feed-images.pot"
+		]
 	}
 }

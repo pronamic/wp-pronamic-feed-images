@@ -10,7 +10,7 @@ Requires at least: 3.0
 Author: Pronamic
 Author URI: http://pronamic.eu/
 
-Text Domain: pronamic_feed_images
+Text Domain: pronamic-feed-images
 Domain Path: /languages/
 
 License: GPL
@@ -33,8 +33,7 @@ class Pronamic_Feed_Images_Plugin {
 	 */
 	public static $dirname;
 
-	//////////////////////////////////////////////////
-
+	
 	/**
 	 * The feed image size
 	 *
@@ -42,21 +41,19 @@ class Pronamic_Feed_Images_Plugin {
 	 */
 	public static $feed_image_size;
 
-	//////////////////////////////////////////////////
-
+	
 	/**
 	 * Bootstrap
 	 */
 	public static function bootstrap( $file ) {
-		self::$file = $file;
+		self::$file    = $file;
 		self::$dirname = dirname( $file );
 
-		add_action( 'init',       array( __CLASS__, 'init' ) );
-		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
+		add_action( 'init', [ __CLASS__, 'init' ] );
+		add_action( 'admin_init', [ __CLASS__, 'admin_init' ] );
 	}
 
-	//////////////////////////////////////////////////
-
+	
 	/**
 	 * Initialize
 	 */
@@ -64,7 +61,7 @@ class Pronamic_Feed_Images_Plugin {
 		// Text domain
 		$rel_path = dirname( plugin_basename( self::$file ) ) . '/languages/';
 
-		load_plugin_textdomain( 'pronamic_feed_images', false, $rel_path );
+		load_plugin_textdomain( 'pronamic-feed-images', false, $rel_path );
 
 		// Feed images
 		self::$feed_image_size = get_option( 'pronamic_feed_images_size' );
@@ -73,10 +70,10 @@ class Pronamic_Feed_Images_Plugin {
 			// add_filter( 'the_excerpt_rss',  array( __CLASS__, 'add_feed_image' ) );
 			// add_filter( 'the_content_feed', array( __CLASS__, 'add_feed_image' ) );
 
-			add_action( 'rss_item',         array( __CLASS__, 'feed_item' ) );
-			add_action( 'rss2_item',        array( __CLASS__, 'feed_item' ) );
-			add_action( 'rdf_item',         array( __CLASS__, 'feed_item' ) );
-			add_action( 'atom_item',        array( __CLASS__, 'feed_item' ) );
+			add_action( 'rss_item', [ __CLASS__, 'feed_item' ] );
+			add_action( 'rss2_item', [ __CLASS__, 'feed_item' ] );
+			add_action( 'rdf_item', [ __CLASS__, 'feed_item' ] );
+			add_action( 'atom_item', [ __CLASS__, 'feed_item' ] );
 		}
 	}
 
@@ -86,21 +83,21 @@ class Pronamic_Feed_Images_Plugin {
 	public static function admin_init() {
 		add_settings_section(
 			'pronamic_feed_images', // id
-			__( 'Feed', 'pronamic_feed_images' ), // title
-			array( __CLASS__, 'settings_section' ), // callback
+			__( 'Feed', 'pronamic-feed-images' ), // title
+			[ __CLASS__, 'settings_section' ], // callback
 			'media' // page
 		);
 
 		add_settings_field(
 			'pronamic_feed_images_size', // id
-			__( 'Feed Images Size', 'pronamic_feed_images' ), // title
-			array( __CLASS__, 'input_image_sizes' ),  // callback
+			__( 'Feed Images Size', 'pronamic-feed-images' ), // title
+			[ __CLASS__, 'input_image_sizes' ],  // callback
 			'media', // page
 			'pronamic_feed_images', // section
-			array(  // args
+			[  // args
 				'class'     => 'regular-text',
 				'label_for' => 'pronamic_feed_images_size',
-			)
+			]
 		);
 
 		// Register settings
@@ -111,7 +108,6 @@ class Pronamic_Feed_Images_Plugin {
 	 * Settings section
 	 */
 	public static function settings_section() {
-
 	}
 
 	/**
@@ -132,7 +128,8 @@ class Pronamic_Feed_Images_Plugin {
 			<option value="" <?php selected( $image_size, '' ); ?>></option>
 
 			<?php foreach ( $image_sizes as $size_name ) : ?>
-				<option value="<?php echo esc_attr( $size_name ); ?>" <?php selected( $image_size, $size_name ); ?>><?php
+				<option value="<?php echo esc_attr( $size_name ); ?>" <?php selected( $image_size, $size_name ); ?>>
+				<?php
 
 				echo esc_html( $size_name );
 
@@ -146,9 +143,11 @@ class Pronamic_Feed_Images_Plugin {
 					}
 				}
 
-				?></option>
+				?>
+				</option>
 			<?php endforeach; ?>
-		</select><?php
+		</select>
+		<?php
 	}
 
 	/**
@@ -171,7 +170,7 @@ class Pronamic_Feed_Images_Plugin {
 		if ( has_post_thumbnail() ) {
 			$thumbnail_id = get_post_thumbnail_id();
 
-			$src  = wp_get_attachment_image_src( $thumbnail_id, self::$feed_image_size );
+			$src = wp_get_attachment_image_src( $thumbnail_id, self::$feed_image_size );
 
 			if ( $src ) {
 				$url  = $src[0];

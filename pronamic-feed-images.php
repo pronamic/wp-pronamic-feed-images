@@ -1,23 +1,38 @@
 <?php
-/*
-Plugin Name: Pronamic Feed Images
-Plugin URI: http://pronamic.eu/wp-plugins/feed-images/
-Description: This plugin automatically adds the post thubmanil to the WordPress feeds, the image size can be easily configured.
+/**
+ * Plugin Name: Pronamic Feed Images
+ * Plugin URI: https://www.pronamic.eu/plugins/pronamic-feed-images/
+ * Description: A modern WordPress block-based plugin for creating flexible and customizable donation forms powered by Mollie.
+ *
+ * Version: 1.0.0
+ * Requires at least: 3.0
+ * Requires PHP: 8.1
+ *
+ * Author: Pronamic
+ * Author URI: https://www.pronamic.eu/
+ *
+ * Text Domain: pronamic-feed-images
+ * Domain Path: /languages/
+ *
+ * License: GPL-2.0-or-later
+ *
+ * GitHub URI: https://github.com/pronamic/wp-pronamic-feed-images
+ *
+ * @author    Pronamic <info@pronamic.eu>
+ * @copyright 2005-2025 Pronamic
+ * @license   GPL-3.0-or-later
+ * @package   Pronamic\WordPressFeedImages
+ */
 
-Version: 1.0.0
-Requires at least: 3.0
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-Author: Pronamic
-Author URI: http://pronamic.eu/
-
-Text Domain: pronamic-feed-images
-Domain Path: /languages/
-
-License: GPL
-
-GitHub URI: https://github.com/pronamic/wp-pronamic-feed-images
-*/
-
+/**
+ * Pronamic Feed Images Plugin class
+ *
+ * @package Pronamic\WordPressFeedImages
+ */
 class Pronamic_Feed_Images_Plugin {
 	/**
 	 * The plugin file
@@ -41,7 +56,9 @@ class Pronamic_Feed_Images_Plugin {
 	public static $feed_image_size;
 
 	/**
-	 * Bootstrap
+	 * Bootstrap.
+	 *
+	 * @param string $file The plugin file.
 	 */
 	public static function bootstrap( $file ) {
 		self::$file    = $file;

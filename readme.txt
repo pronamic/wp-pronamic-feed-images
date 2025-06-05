@@ -10,13 +10,13 @@ This plugin automatically adds the post thubmanil to the WordPress feeds, the im
 == Description ==
 
 This plugin automatically adds the post thubmanil to the WordPress feeds, the image size can be easily configured.
-This plugin differs from other plugins because it is built according the WordPress Coding Standards and uses many 
+This plugin differs from other plugins because it is built according the WordPress Coding Standards and uses many
 powerful WordPress functions.
 
 
 == Installation ==
 
-Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your 
+Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your
 WordPress installation and then activate the Plugin from Plugins page.
 
 

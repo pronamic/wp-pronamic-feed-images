@@ -17,4 +17,6 @@
 
 phpcs.xml.dist
 
+/rector.php
+
 /build/

@@ -72,12 +72,12 @@ class Pronamic_Feed_Images_Plugin {
 	 * Initialize
 	 */
 	public static function init() {
-		// Text domain
+		// Text domain.
 		$rel_path = dirname( plugin_basename( self::$file ) ) . '/languages/';
 
 		load_plugin_textdomain( 'pronamic-feed-images', false, $rel_path );
 
-		// Feed images
+		// Feed images.
 		self::$feed_image_size = get_option( 'pronamic_feed_images_size' );
 
 		if ( ! empty( self::$feed_image_size ) ) {
@@ -92,29 +92,28 @@ class Pronamic_Feed_Images_Plugin {
 	}
 
 	/**
-	 * Admin initialize
+	 * Admin initialize.
 	 */
 	public static function admin_init() {
 		add_settings_section(
-			'pronamic_feed_images', // id
-			__( 'Feed', 'pronamic-feed-images' ), // title
-			[ __CLASS__, 'settings_section' ], // callback
-			'media' // page
+			'pronamic_feed_images',
+			__( 'Feed', 'pronamic-feed-images' ),
+			[ __CLASS__, 'settings_section' ],
+			'media'
 		);
 
 		add_settings_field(
-			'pronamic_feed_images_size', // id
-			__( 'Feed Images Size', 'pronamic-feed-images' ), // title
-			[ __CLASS__, 'input_image_sizes' ],  // callback
-			'media', // page
-			'pronamic_feed_images', // section
-			[  // args
+			'pronamic_feed_images_size',
+			__( 'Feed Images Size', 'pronamic-feed-images' ),
+			[ __CLASS__, 'input_image_sizes' ],
+			'media',
+			'pronamic_feed_images',
+			[
 				'class'     => 'regular-text',
 				'label_for' => 'pronamic_feed_images_size',
 			]
 		);
 
-		// Register settings
 		register_setting( 'media', 'pronamic_feed_images_size' );
 	}
 
@@ -125,9 +124,9 @@ class Pronamic_Feed_Images_Plugin {
 	}
 
 	/**
-	 * Input page
+	 * Input page.
 	 *
-	 * @param array $args
+	 * @param array $args Input arguments.
 	 */
 	public static function input_image_sizes( $args ) {
 		global $_wp_additional_image_sizes;
@@ -165,9 +164,9 @@ class Pronamic_Feed_Images_Plugin {
 	}
 
 	/**
-	 * Add feed image to output
+	 * Add feed image to output.
 	 *
-	 * @param string $output
+	 * @param string $output Output.
 	 */
 	public static function add_feed_image( $output ) {
 		if ( has_post_thumbnail() ) {
@@ -178,7 +177,7 @@ class Pronamic_Feed_Images_Plugin {
 	}
 
 	/**
-	 * Feed item
+	 * Feed item.
 	 */
 	public static function feed_item() {
 		if ( has_post_thumbnail() ) {

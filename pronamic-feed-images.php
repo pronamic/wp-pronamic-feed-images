@@ -64,8 +64,8 @@ class Pronamic_Feed_Images_Plugin {
 		self::$file    = $file;
 		self::$dirname = dirname( $file );
 
-		add_action( 'init', [ __CLASS__, 'init' ] );
-		add_action( 'admin_init', [ __CLASS__, 'admin_init' ] );
+		add_action( 'init', self::init( ... ) );
+		add_action( 'admin_init', self::admin_init( ... ) );
 	}
 
 	/**
@@ -81,10 +81,10 @@ class Pronamic_Feed_Images_Plugin {
 		self::$feed_image_size = get_option( 'pronamic_feed_images_size' );
 
 		if ( ! empty( self::$feed_image_size ) ) {
-			add_action( 'rss_item', [ __CLASS__, 'feed_item' ] );
-			add_action( 'rss2_item', [ __CLASS__, 'feed_item' ] );
-			add_action( 'rdf_item', [ __CLASS__, 'feed_item' ] );
-			add_action( 'atom_item', [ __CLASS__, 'feed_item' ] );
+			add_action( 'rss_item', self::feed_item( ... ) );
+			add_action( 'rss2_item', self::feed_item( ... ) );
+			add_action( 'rdf_item', self::feed_item( ... ) );
+			add_action( 'atom_item', self::feed_item( ... ) );
 		}
 	}
 
@@ -95,14 +95,14 @@ class Pronamic_Feed_Images_Plugin {
 		add_settings_section(
 			'pronamic_feed_images',
 			__( 'Feed', 'pronamic-feed-images' ),
-			[ __CLASS__, 'settings_section' ],
+			self::settings_section( ... ),
 			'media'
 		);
 
 		add_settings_field(
 			'pronamic_feed_images_size',
 			__( 'Feed Images Size', 'pronamic-feed-images' ),
-			[ __CLASS__, 'input_image_sizes' ],
+			self::input_image_sizes( ... ),
 			'media',
 			'pronamic_feed_images',
 			[

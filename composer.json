@@ -2,7 +2,13 @@
 	"config": {
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"platform": {
+			"php": "8.2"
 		}
+	},
+	"require": {
+		"php": "^8.2"
 	},
 	"require-dev": {
 		"pronamic/wp-coding-standards": "^2.3",

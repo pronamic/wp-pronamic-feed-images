@@ -16,35 +16,35 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: pronamic-feed-images.php:83
+#: pronamic-feed-images.php:98
 msgid "Feed"
 msgstr "Feed"
 
-#: pronamic-feed-images.php:90
+#: pronamic-feed-images.php:105
 msgid "Feed Images Size"
 msgstr "Feed afbeeldingen afmeting"
-
-#. Author URI of the plugin
-#: pronamic-feed-images.php
-#~ msgid "http://pronamic.eu/"
-#~ msgstr "http://pronamic.nl/"
 
 #. Plugin Name of the plugin
 #: pronamic-feed-images.php
 msgid "Pronamic Feed Images"
 msgstr ""
 
+#. Author of the plugin
+#: pronamic-feed-images.php
+msgid "Pronamic"
+msgstr ""
+
 #. Plugin URI of the plugin
 #: pronamic-feed-images.php
-msgid "http://pronamic.eu/wp-plugins/feed-images/"
+msgid "https://www.pronamic.eu/plugins/pronamic-feed-images/"
 msgstr ""
 
 #. Description of the plugin
 #: pronamic-feed-images.php
-msgid "This plugin automatically adds the post thubmanil to the WordPress feeds, the image size can be easily configured."
+msgid "A modern WordPress block-based plugin for creating flexible and customizable donation forms powered by Mollie."
 msgstr ""
 
-#. Author of the plugin
+#. Author URI of the plugin
 #: pronamic-feed-images.php
-msgid "Pronamic"
+msgid "https://www.pronamic.eu/"
 msgstr ""

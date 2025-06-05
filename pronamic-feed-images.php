@@ -2,9 +2,9 @@
 /**
  * Plugin Name: Pronamic Feed Images
  * Plugin URI: https://www.pronamic.eu/plugins/pronamic-feed-images/
- * Description: A modern WordPress block-based plugin for creating flexible and customizable donation forms powered by Mollie.
+ * Description: This plugin automatically adds the post thubmanil to the WordPress feeds, the image size can be easily configured.
  *
- * Version: 1.0.0
+ * Version: 1.1.0
  * Requires at least: 3.0
  * Requires PHP: 8.1
  *

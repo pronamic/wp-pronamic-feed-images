@@ -1,4 +1,9 @@
 <?php
+/**
+ * Uninstall
+ *
+ * @package Pronamic\WordPressFeedImages
+ */
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit();

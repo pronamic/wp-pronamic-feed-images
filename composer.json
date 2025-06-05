@@ -1,0 +1,13 @@
+{
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"require-dev": {
+		"pronamic/wp-coding-standards": "^2.3",
+		"roots/wordpress-no-content": "^6.8",
+		"wp-cli/dist-archive-command": "*",
+		"wp-cli/wp-cli-bundle": "*"
+	}
+}

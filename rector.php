@@ -1,4 +1,9 @@
 <?php
+/**
+ * Rector
+ *
+ * @package Pronamic\WordPressFeedImages
+ */
 
 declare(strict_types=1);
 

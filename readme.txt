@@ -4,6 +4,8 @@ Tags: pronamic, feed, image, thumbnail, rss
 Requires at least: 3.0
 Tested up to: 6.8
 Stable tag: 1.1.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin automatically adds the post thubmanil to the WordPress feeds, the image size can be easily configured.
 
